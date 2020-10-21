@@ -1,0 +1,105 @@
+<div id="view" fxFlex fxLayout="column">
+
+	<app-header [formGroup]="form" [operation]="operation" [title]="title" 
+		(cancel)="onCancel()" (save)="onSave()">
+	</app-header>
+
+	<div class="content-form-wrapper w-95-p p-20" fusePerfectScrollbar>
+		<form fxLayoutAlign="space-between" fxLayout="column">
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input-select fxFlex [data]="categories" [formGroup]="form" 
+					formcontrolname="idCategory" label="Categoria" placeholder="Categoria"
+					displayField="description" valueField="idCategory" searchField="description">
+				</app-input-select>
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="name" label="Nome"
+					[maxLength]="100" placeholder="Nome">
+				</app-input>
+			
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-text-area fxFlex [formGroup]="form" formcontrolname="description" label="Descrição"
+					[maxLength]="500" placeholder="Descrição">
+				</app-text-area>
+
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="unitPrice" label="Preço Unitário (R$)"
+					(changedValue)="onChangeTotalValue($event)" placeholder="Preço Unitário (R$)">
+				</app-input-number>
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="interestPrice" label="Valor Juros (R$)"
+					(changedValue)="onChangeTotalValue($event)" placeholder="Valor Juros (R$)">
+				</app-input-number>
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="percent" label="Lucro (%)"
+					(changedValue)="onChangeTotalValue($event)" placeholder="Lucro (%)">
+				</app-input-number>
+			
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="totalUnitPrice" label="Preço de Venda Unitário (R$)"
+					placeholder="Preço de Venda Unitário (R$)">
+				</app-input-number>
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="totalInterestPrice" label="Preço de Venda Unitário c/ Juros (R$)"
+					placeholder="Preço de Venda Unitário c/ Juros (R$)">
+				</app-input-number>
+			
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column"
+				*ngIf="operation === 'EDIT'">
+
+				<app-input-file fxFlex [formGroup]="formFile" formcontrolname="file" accept="image/*"
+					(insertedFile)="insertedFile($event)">
+				</app-input-file>
+
+				<button mat-raised-button class="button button-add-file fuse-white mt-24 mt-md-0" [disabled]="formFile.invalid"
+					fxFlex="20" (click)="onSaveFile()">
+					<span>ADICIONAR</span>
+				</button>
+
+			</div>
+
+			<div fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px" fxLayout.lt-md="row"
+				fxFlex.xs="100" fxLayout.lt-sm="column" *ngIf="photos" class="mt-20">
+
+				<div fxFlex="30" fxFlex.xs="100" *ngFor="let item of photos" class="box-photo mt-20"
+					fxLayoutGap="15px" fxLayout.lt-md="column" fxLayout.lt-sm="column"
+					fxLayout="column wrap" >
+
+					<div fxFlex class="div-photo">
+						<img class="image-product" [src]="urlS3 + item.photo.name" />
+					</div>
+					<div fxFlex class="mt-4 div-buttons" *ngIf="operation === 'EDIT'">
+						<button fxFlex="33" mat-raised-button class="button button-edit-file mat-raised-button mat-accent"
+							(click)="onEditPosition(item, -1)" *ngIf="item.position !== 1">
+							<span>SUBIR</span>
+						</button>
+						<button fxFlex="33" mat-raised-button class="button button-edit-file fuse-red"
+							(click)="onRemoveFile(item)">
+							<span>EXCLUIR</span>
+						</button>
+						<button fxFlex="33" mat-raised-button class="button button-edit-file mat-raised-button mat-accent"
+							(click)="onEditPosition(item, +1)" *ngIf="item.position !== photos.length">
+							<span>DESCER</span>
+						</button>
+					</div>
+
+				</div>
+
+			</div>
+
+		</form>
+
+	</div>
+</div>

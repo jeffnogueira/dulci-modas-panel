@@ -1,0 +1,30 @@
+<div id="view" fxFlex fxLayout="column">
+	
+	<div fxFlex fxLayout="column" class="container">
+		<div fxFlex fxLayout="row">
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Últimas Compras por Semana</h2>
+				<app-chart *ngIf="dataSourceLastPurchases" fxFlex type="bar" title="Últimas Compras por Semana" 
+					[dataSource]="dataSourceLastPurchases"></app-chart>
+			</div>
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Fluxo de Estoque por semana</h2>
+				<app-chart *ngIf="dataSourceInvetoryFlow" fxFlex type="line" title="Fluxo de Estoque por Semana" 
+					[dataSource]="dataSourceInvetoryFlow"></app-chart>
+			</div>
+		</div>
+		<div fxFlex fxLayout="row">
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Maiores Fornecedores</h2>
+				<app-chart *ngIf="dataSourceGreaterProviders" fxFlex type="bar" title="Maiores Fornecedores" 
+					[dataSource]="dataSourceGreaterProviders"></app-chart>
+			</div>
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Produtos mais Comprados</h2>
+				<app-chart *ngIf="dataSourceTopSellingProducts" fxFlex type="pie" title="Produtos mais Comprados" 
+					[dataSource]="dataSourceTopSellingProducts"></app-chart>
+			</div>
+		</div>
+	</div>
+
+</div>

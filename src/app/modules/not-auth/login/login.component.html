@@ -1,0 +1,32 @@
+<div id="login" fxLayout="column">
+
+	<div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center">
+
+		<div id="login-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+			<div class="logo">
+				<img src="assets/images/logos/logo-black.png">
+			</div>
+
+			<div class="title">LOGIN</div>
+
+			<form name="loginForm" [formGroup]="form" novalidate>
+
+				<app-input type="email" [formGroup]="form" formcontrolname="email" label="Email"
+					placeholder="Email" iconName="mail">
+				</app-input>
+
+				<app-input type="password" [formGroup]="form" formcontrolname="password" label="Senha"
+					placeholder="Senha" iconName="vpn_key">
+				</app-input>
+
+				<button mat-raised-button color="accent" class="submit-button" aria-label="ENTRAR"
+					[disabled]="form.invalid" (click)="onLogin()">ENTRAR</button>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,15 @@
+mat-card {
+    text-align: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 2px 2px grey;
+
+    h2, h3 {
+        color: white;
+        font-weight: bolder;
+    }
+    h2 {
+        font-size: 22px;
+        margin-bottom: 0;
+    }
+}

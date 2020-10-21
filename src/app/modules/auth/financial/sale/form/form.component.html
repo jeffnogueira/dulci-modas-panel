@@ -1,0 +1,132 @@
+<div id="view" fxFlex fxLayout="column">
+
+	<app-header [formGroup]="form" [operation]="operation" [title]="title" 
+		(cancel)="onCancel()" (save)="onSave()">
+	</app-header>
+
+	<div class="content-form-wrapper w-95-p p-20" fusePerfectScrollbar>
+		<form fxLayoutAlign="space-between" fxLayout="column">
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input-select fxFlex [data]="products" [formGroup]="form" 
+					formcontrolname="idProduct" label="Produto" placeholder="Produto"
+					displayField="name" valueField="idProduct" searchField="name"
+					(selectChange)="onChangeProduct($event)">
+				</app-input-select>
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="dateSale" label="Data da Venda"
+					type="date" placeholder="Data da Venda">
+				</app-input>
+			
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="quantity" label="Quantidade (un)"
+					(changedValue)="onChangeSaleValue(productSelected)" placeholder="Quantidade (un)"
+					min="1">
+				</app-input-number>
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="discount" label="Desconto (%)"
+					(changedValue)="onChangeSaleValue(productSelected)" placeholder="Desconto (%)"
+					min="0">
+				</app-input-number>
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="plots" label="Parcelas"
+					(changedValue)="onChangeSaleValue(productSelected)" placeholder="Parcelas"
+					min="1" max="5">
+				</app-input-number>
+
+				<app-input-checkbox fxFlex [formGroup]="form" formcontrolname="dropSale" label="Baixa na Venda?"
+					placeholder="Baixa na Venda?" [disabled]="operation === 'VIEW'">
+				</app-input-checkbox>
+			
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<div fxFlex fxLayout="column" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+					<app-input-select fxFlex [data]="clients" [formGroup]="form" 
+						formcontrolname="idClient" label="Comprador" placeholder="Comprador"
+						displayField="name" valueField="idClient" searchField="name">
+					</app-input-select>
+
+					<div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+						<app-input-number fxFlex [formGroup]="form" formcontrolname="totalUnitPrice" label="Preço Unitário (R$)"
+							placeholder="Preço Unitário (R$)">
+						</app-input-number>
+
+						<app-input-number fxFlex [formGroup]="form" formcontrolname="totalSalePrice" label="Preço Total (R$)"
+							placeholder="Preço Total (R$)">
+						</app-input-number>
+
+					</div>
+
+				</div>
+
+				<app-text-area fxFlex [formGroup]="form" formcontrolname="description" label="Descrição"
+					[maxLength]="200" placeholder="Descrição" minRows="7" maxRows="7">
+				</app-text-area>
+
+			</div>
+
+
+
+			<div *ngIf="operation != 'NEW'" fxFlex="100" fxLayout="column wrap" fxLayoutGap="10px" fxLayout.lt-md="column"
+				fxFlex.xs="100" fxLayout.lt-sm="column" class="mt-20">
+
+				<h2 fxFlex>Comentários</h2>
+
+				<div *ngIf="operation === 'EDIT'" fxFlex fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="row" alignItems="center">
+
+					<div fxFlex="80" fxLayout="column" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+						<app-text-area fxFlex="80" fxLayoutGap="10px" [formGroup]="formComment" formcontrolname="description" 
+							label="Comentário" [maxLength]="250" placeholder="Comentário" minRows="4" maxRows="4">
+						</app-text-area>
+
+					</div>
+
+					<div fxFlex="20" fxLayout="column" fxLayoutGap="10px" fxLayout.lt-md="column" class="div-button-add-comment">
+
+						<button mat-raised-button class="button button-add-comment fuse-white" [disabled]="formComment.invalid"
+							(click)="onSaveComment()">
+							<span>ADICIONAR</span>
+						</button>
+
+					</div>
+				</div>
+
+				<div fxFlex="100" fxFlex.xs="100" *ngFor="let item of comments" class="box-comment mt-20"
+					fxLayoutGap="15px" fxLayout.lt-md="column" fxLayout.lt-sm="column"
+					fxLayout="column wrap" >
+
+					<div fxFlex fxLayout="column" class="div-comment">
+
+						<div fxFlex class="div-comment-header">
+							<div fxFlex="90">
+								<strong>Data: </strong>{{ item.createdAt | date: 'dd/MM/yyyy HH:mm' }}
+							</div>
+
+
+							<div *ngIf="operation === 'EDIT'" fxFlex="10" class="div-comment-buttons">
+								<mat-icon fxFlex="10" class="fs-20" (click)="onDeleteComment(item.idComment)">delete</mat-icon>
+							</div>
+						</div>
+
+						<div fxFlex="90" class="div-comment-description">
+							{{ item.description }}
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</form>
+
+	</div>
+</div>

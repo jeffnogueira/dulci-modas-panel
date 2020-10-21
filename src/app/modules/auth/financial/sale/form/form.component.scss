@@ -1,0 +1,38 @@
+.div-button-add-comment {
+	justify-content: center;
+	align-items: center;
+
+	.button-add-comment {
+		max-height: 50px;
+		width: 100%;
+    	margin-top: -15px !important;
+	}
+}
+
+.box-comment div {
+	max-width: 100%;
+}
+
+.div-comment {
+	text-align: justify;
+	background-color: #e2dede;
+    padding: 20px;
+	border-radius: 25px;
+	
+	.div-comment-header {
+		justify-content: space-between;
+
+		.div-comment-buttons {
+			justify-content: flex-end;
+
+			mat-icon {
+				cursor: pointer;
+				margin-right: 5px;
+			}
+		}
+	}
+
+	.div-comment-description {
+		padding: 15px;
+	}
+}

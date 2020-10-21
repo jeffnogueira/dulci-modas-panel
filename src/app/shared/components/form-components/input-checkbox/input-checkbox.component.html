@@ -1,0 +1,7 @@
+<div class="wrapper" fxFlex>
+	<mat-slide-toggle [disabled]="disabled" [(ngModel)]="formGroup?.get(formcontrolname).value" 
+		(change)="onValueChange($event)">{{ label }}</mat-slide-toggle>
+	<mat-error>
+		<app-error [formcontrolname]="formcontrolname" [formGroup]="formGroup"></app-error>
+	</mat-error>
+</div>

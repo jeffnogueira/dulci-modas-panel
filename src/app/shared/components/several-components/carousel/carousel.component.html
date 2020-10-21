@@ -1,0 +1,12 @@
+<div fxFlex fxLayout="column" *ngIf="imagesCarousel">
+    <div class="slideshow-container" fxFlex="100" fxLayout="row">
+
+        <div *ngFor="let item of imagesCarousel" class="mySlides fade dNone" fxFlex="20">
+            <img [src]="urlS3 + item.image" [title]="item.title" (click)="navigateToProduct(item)">
+        </div>
+            
+        <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+        <a class="next" (click)="plusSlides(1)">&#10095;</a>
+            
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div id="view" fxFlex fxLayout="column">
+
+    <div class="container-cards" fxFlex="22" fxLayout="row">
+
+		<app-card fxFlex *ngFor="let item of dataSourceCards" [title]="item.title" [description]="item.description" 
+			[color]="item.color" ></app-card>
+
+	</div>
+	
+	<div fxFlex="78" fxLayout="row">
+		<div class="container-dataTable w-100-p" fxFlex>
+			<h2>Últimas Compras Realizadas</h2>
+			<app-data-table [data]="dataSourcePurchases" [config]="configPurchase" [isPaginated]="false">
+			</app-data-table>
+		</div>
+
+		<div class="container-dataTable w-100-p" fxFlex>
+			<h2>Últimas Vendas Realizadas</h2>
+			<app-data-table [data]="dataSourceSales" [config]="configSale" [isPaginated]="false">
+			</app-data-table>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,36 @@
+.content-wrapper {
+	z-index: 2;
+}
+
+.page-layout {
+	margin: 20px;
+}
+
+.button-add-file {
+	max-height: 69.5px;
+}
+
+.box-photo div {
+	max-width: 100%;
+}
+
+.button-edit-file {
+	max-height: 35px;
+}
+
+.button-edit-file span {
+	font-size: 13px;
+}
+
+.image-product{
+	max-height: 182px;
+}
+
+.image-product, .div-buttons {
+	justify-content: center;
+	flex: 0 1 auto !important;
+}
+
+.div-photo {
+	text-align: center;
+}

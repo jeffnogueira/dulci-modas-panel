@@ -1,0 +1,37 @@
+<div id="view" fxFlex fxLayout="column">
+
+	<app-header [formGroup]="form" [operation]="operation" [title]="title" 
+		(cancel)="onCancel()" (save)="onSave()">
+	</app-header>
+
+	<div class="content-form-wrapper w-95-p p-20" fusePerfectScrollbar>
+		<form fxLayoutAlign="space-between" fxLayout="column">
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="name" label="Nome"
+					[maxLength]="100" placeholder="Nome">
+				</app-input>
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="cpf" label="CPF"
+					placeholder="CPF" mask="000.000.000-00">
+				</app-input>
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="phone" label="Telefone"
+					placeholder="Telefone" mask="(00) 00000-0000">
+				</app-input>
+			
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="address" label="Endereço"
+					[maxLength]="200" placeholder="Endereço">
+				</app-input>
+
+			</div>
+
+		</form>
+
+	</div>
+</div>

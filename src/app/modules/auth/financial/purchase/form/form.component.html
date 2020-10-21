@@ -1,0 +1,43 @@
+<div id="view" fxFlex fxLayout="column">
+
+	<app-header [formGroup]="form" [operation]="operation" [title]="title" 
+		(cancel)="onCancel()" (save)="onSave()">
+	</app-header>
+
+	<div class="content-form-wrapper w-95-p p-20" fusePerfectScrollbar>
+		<form fxLayoutAlign="space-between" fxLayout="column">
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input-select fxFlex [data]="providers" [formGroup]="form" 
+					formcontrolname="idProvider" label="Fornecedor" placeholder="Fornecedor"
+					displayField="name" valueField="idProvider" searchField="name">
+				</app-input-select>
+
+				<app-input-select fxFlex [data]="products" [formGroup]="form" 
+					formcontrolname="idProduct" label="Produto" placeholder="Produto"
+					displayField="name" valueField="idProduct" searchField="name">
+				</app-input-select>
+			
+			</div>
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="unitPrice" label="Preço Unitário (R$)"
+					placeholder="Preço Unitário (R$)">
+				</app-input-number>
+
+				<app-input-number fxFlex [formGroup]="form" formcontrolname="quantity" label="Quantidade (un)"
+					placeholder="Quantidade (un)" min="1">
+				</app-input-number>
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="datePurchase" label="Data da Compra"
+					type="date" placeholder="Data da Compra">
+				</app-input>
+			
+			</div>
+
+		</form>
+
+	</div>
+</div>

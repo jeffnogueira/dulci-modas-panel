@@ -1,0 +1,13 @@
+<div id="view" fxFlex fxLayout="column">
+    
+    <div fxFlex fxLayout="column">
+        <h2 fxFlex>Produtos para Comprar</h2>
+        <app-carousel *ngIf="productsToPurchase" fxFlex [imagesCarousel]="productsToPurchase"></app-carousel>
+    </div>
+
+    <div fxFlex fxLayout="column">
+        <h2 fxFlex>Produtos para Promoção</h2>
+        <app-carousel *ngIf="productsToPromotion" fxFlex [imagesCarousel]="productsToPromotion"></app-carousel>
+    </div>
+
+</div>

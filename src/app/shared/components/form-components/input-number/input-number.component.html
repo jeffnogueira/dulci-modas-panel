@@ -1,0 +1,9 @@
+<mat-form-field [formGroup]="formGroup" appearance="outline" fxFlex>
+	<mat-label>{{ label }}</mat-label>
+	<input matInput type="number" [formControlName]="formcontrolname" [placeholder]="placeholder"
+		(keyup)="onChange()" [min]="min" [max]="max" onkeydown="return event.keyCode !== 69">
+	<mat-icon *ngIf="iconName" matSuffix class="secondary-text">{{ iconName }}</mat-icon>
+	<mat-error>
+		<app-error [formcontrolname]="formcontrolname" [formGroup]="formGroup"></app-error>
+	</mat-error>
+</mat-form-field>

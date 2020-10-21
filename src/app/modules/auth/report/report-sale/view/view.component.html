@@ -1,0 +1,30 @@
+<div id="view" fxFlex fxLayout="column">
+	
+	<div fxFlex fxLayout="column" class="container">
+		<div fxFlex fxLayout="row">
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Últimas Vendas por Semana</h2>
+				<app-chart *ngIf="dataSourceLastSales" fxFlex type="line" title="Últimas Vendas por Semana" 
+					[dataSource]="dataSourceLastSales"></app-chart>
+			</div>
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Maiores Devedores</h2>
+				<app-chart *ngIf="dataSourceBiggestDeptors" fxFlex type="bar" title="Maiores Devedores" 
+					[dataSource]="dataSourceBiggestDeptors"></app-chart>
+			</div>
+		</div>
+		<div fxFlex fxLayout="row">
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Últimas Vendas sem Baixa por Semana</h2>
+				<app-chart *ngIf="dataSourceLastSalesNotDropped" fxFlex type="line" title="Últimas Vendas sem Baixa por Semana" 
+					[dataSource]="dataSourceLastSalesNotDropped"></app-chart>
+			</div>
+			<div fxFlex="50" fxLayout="column">
+				<h2 fxFlex>Últimas Vendas com Baixa por Semana</h2>
+				<app-chart *ngIf="dataSourceLastSalesDropped" fxFlex type="line" title="Últimas Vendas com Baixa por Semana" 
+					[dataSource]="dataSourceLastSalesDropped"></app-chart>
+			</div>
+		</div>
+	</div>
+
+</div>

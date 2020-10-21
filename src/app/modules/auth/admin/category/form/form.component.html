@@ -1,0 +1,21 @@
+<div id="view" fxFlex fxLayout="column">
+
+	<app-header [formGroup]="form" [operation]="operation" [title]="title" 
+		(cancel)="onCancel()" (save)="onSave()">
+	</app-header>
+
+	<div class="content-form-wrapper w-95-p p-20" fusePerfectScrollbar>
+		<form fxLayoutAlign="space-between" fxLayout="column">
+
+			<div fxFlex="100" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
+
+				<app-input fxFlex [formGroup]="form" formcontrolname="description" label="Descrição"
+					[maxLength]="45" placeholder="Descrição">
+				</app-input>
+
+			</div>
+
+		</form>
+
+	</div>
+</div>
