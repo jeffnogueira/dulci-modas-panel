@@ -19,7 +19,7 @@
 ## RUN
 
 ```
-$ cd dulci-modas-painel
+$ cd dulci-modas-panel
 
 $ npm install
 
